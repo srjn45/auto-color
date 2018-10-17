@@ -18,15 +18,23 @@ export default class AutoColor extends React.Component {
             rgb = rgb.map(val => parseInt(val));
         }
         let mean = rgb.reduce((a, b) => a + b, 0) / 3;
+
+        // Experimental work, commented before commit
+        // 
+        // trying to use standard deviation for better results
+        // also may need to handle each color differently
+        // 
         // let sd = rgb.map(val => val - mean);
         // console.log(rgb);
         // console.log(sd);
         // console.log(sd.map(val => 0 - val >= 0 ? 0 - val : 0).join(','));
         // console.log(sd.map(val => 255 - val <= 255 ? 255 - val : 255));
+
         let threshold = this.props.threshold ? this.props.threshold : 128;
         this.setState({ color: mean > threshold ? '#000000' : '#ffffff' });
     }
 
+    // this function is copied from a StackOverflow answer
     hexToRgb(hex) {
         if (hex.length < 6) {
             return { r: 0, g: 0, b: 0 }
