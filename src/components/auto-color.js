@@ -4,7 +4,7 @@ export default class AutoColor extends React.Component {
     constructor(props) {
         super(props);
         this.hexToRgb = this.hexToRgb.bind(this);
-        this.state = { color: '#ffffff', backgroundColor: '#000000' }
+        this.state = { color: '#000000', backgroundColor: '#ffffff' }
     }
 
     componentWillMount() {
@@ -18,7 +18,13 @@ export default class AutoColor extends React.Component {
             rgb = rgb.map(val => parseInt(val));
         }
         let mean = rgb.reduce((a, b) => a + b, 0) / 3;
-        this.setState({ color: mean > this.props.threshold ? '#000000' : '#ffffff' });
+        // let sd = rgb.map(val => val - mean);
+        // console.log(rgb);
+        // console.log(sd);
+        // console.log(sd.map(val => 0 - val >= 0 ? 0 - val : 0).join(','));
+        // console.log(sd.map(val => 255 - val <= 255 ? 255 - val : 255));
+        let threshold = this.props.threshold;
+        this.setState({ color: mean > threshold ? '#000000' : '#ffffff' });
     }
 
     hexToRgb(hex) {
