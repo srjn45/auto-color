@@ -23,7 +23,7 @@ export default class AutoColor extends React.Component {
         // console.log(sd);
         // console.log(sd.map(val => 0 - val >= 0 ? 0 - val : 0).join(','));
         // console.log(sd.map(val => 255 - val <= 255 ? 255 - val : 255));
-        let threshold = this.props.threshold;
+        let threshold = this.props.threshold ? this.props.threshold : 128;
         this.setState({ color: mean > threshold ? '#000000' : '#ffffff' });
     }
 

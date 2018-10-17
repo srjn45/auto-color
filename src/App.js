@@ -10,7 +10,7 @@ class App extends Component {
       // <AutoColor backgroundColor={'#809070'}>
       //   <p>here is the para</p>
       // </AutoColor>
-      <AutoColor threshold={128} backgroundColor={'rgb(123, 252, 145)'}>
+      <AutoColor backgroundColor={'rgb(223, 252, 145)'}>
         <p>here is the para</p>
       </AutoColor>
     );
