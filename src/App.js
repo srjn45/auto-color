@@ -10,7 +10,10 @@ class App extends Component {
       // <AutoColor backgroundColor={'#809070'}>
       //   <p>here is the para</p>
       // </AutoColor>
-      <AutoColor backgroundColor={'rgb(223, 252, 145)'}>
+      // <AutoColor backgroundColor={'rgb(223, 252, 145)'}>
+      //   <p>here is the para</p>
+      // </AutoColor>
+      <AutoColor backgroundColor={'rgba(223, 252, 145, 0.3)'}>
         <p>here is the para</p>
       </AutoColor>
     );

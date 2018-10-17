@@ -10,9 +10,14 @@ export default class AutoColor extends React.Component {
     componentWillMount() {
         let bg = this.props.backgroundColor;
         let rgb = [];
+        let opacity = null;
         if (bg.startsWith('#')) {
             let hex = bg.replace('#', '').trim();
             rgb = this.hexToRgb(hex);
+        } else if (bg.startsWith('rgba')) {
+            rgb = bg.replace('rgba', '').replace('(', '').replace(')', '').replace(' ', '').split(',');
+            opacity = rgb.splice(3)[0];
+            rgb = rgb.map(val => parseInt(val));
         } else if (bg.startsWith('rgb')) {
             rgb = bg.replace('rgb', '').replace('(', '').replace(')', '').replace(' ', '').split(',');
             rgb = rgb.map(val => parseInt(val));
@@ -31,6 +36,9 @@ export default class AutoColor extends React.Component {
         // console.log(sd.map(val => 255 - val <= 255 ? 255 - val : 255));
 
         let threshold = this.props.threshold ? this.props.threshold : 128;
+        if (opacity != null) {
+            threshold = parseInt(threshold * opacity)
+        }
         this.setState({ color: mean > threshold ? '#000000' : '#ffffff' });
     }
 
